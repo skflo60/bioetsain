@@ -1,0 +1,47 @@
+{
+  "name": "src",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./serve",
+    "serve": "npx vue-cli-service serve",
+    "build": "npx vue-cli-service build",
+    "lint": "npx vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "nprogress": "^0.2.0",
+    "vue": "2.6.10",
+    "vue-router": "^3.0.2",
+    "vuex": "3.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "3.5.1",
+    "@vue/cli-plugin-eslint": "3.5.1",
+    "@vue/cli-service": "3.5.1",
+    "autoprefixer": "9.5.0",
+    "express": "^4.16.4",
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "0.7.4",
+    "vue-template-compiler": "2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
