@@ -20,6 +20,9 @@ export default {
     ADD_CART: (state, payload) => {
       state.cart.push(payload);
     },
+    REFRESH_CART: (state, payload) => {
+      state.cart = Array.from(state.cart)
+    },
     INCREMENT_CART: (state, payload) => {
       payload.qty++;
       payload.subtotal = payload.price * payload.qty;
@@ -36,6 +39,9 @@ export default {
   actions: {
     addCart({ commit }, product) {
       commit('ADD_CART', product);
+    },
+    refreshCart({ commit }) {
+      commit('REFRESH_CART');
     },
     incrementCart({ state, commit }, product) {
       const item = getProductById(state.cart, product.id);

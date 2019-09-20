@@ -16,5 +16,9 @@ export default {
 
   getProductsByPage(page) {
     return Api().get(`${resource}?page=${page}`);
+  },
+
+  updateProduct(product) {
+    return Api().post(`${resource}`, product);
   }
 };

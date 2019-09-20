@@ -2,57 +2,56 @@
   <div class="container max-w-sm mx-auto mt-32">
     <form class="bg-white rounded box-shadow">
       <fieldset class="p-4">
-        <h2 class="text-xl mb-0">Login</h2>
+        <h2 class="text-xl mb-0">Connexion</h2>
       </fieldset>
       <div class="p-4">
         <div
-          class="mb-3 p-3 border border-red bg-red-light"
-          v-if="msgError != ''"
+        class="mb-3 p-3 border border-red bg-red-light"
+        v-if="msgError != ''"
         >
-          <span class="text-white font-semibold" v-text="msgError"></span>
-        </div>
-        <div class="block mb-3">
-          <input
-            type="text"
-            placeholder="Username"
-            class="Input-text w-full border border-grey-light p-3 rounded box-shadow"
-            autocomplete="username"
-            v-model="username"
-          />
-        </div>
-        <div class="block mb-3">
-          <input
-            type="password"
-            placeholder="Password"
-            class="Input-text w-full border border-grey-light p-3 rounded box-shadow"
-            autocomplete="current-password"
-            v-model="password"
-          />
-        </div>
-        <button
-          class="w-full border box-shadow bg-blue-dark text-white p-3 font-semibold rounded box-shadow"
-          :class="{ 'opacity-75 pointer-events-none': isDisabled }"
-          @click.prevent="login"
-        >
-          Login
-        </button>
+        <span class="text-white font-semibold" v-text="msgError"></span>
       </div>
-      <div class="p-4">
-        <p class="mb-0 text-black">
-          Haven't account?
-          <router-link
-            tag="a"
-            :to="{ name: 'signup' }"
-            :class="{ 'opacity-75 pointer-events-none': isDisabled }"
-            class="inline-block no-underline font-bold text-black hover:underline"
-          >
-            Create new a account
-          </router-link>
-          instead
-        </p>
+      <div class="block mb-3">
+        <input
+        type="text"
+        placeholder="Nom d'utilisateur"
+        class="Input-text w-full border border-grey-light p-3 rounded box-shadow"
+        autocomplete="username"
+        v-model="username"
+        />
       </div>
-    </form>
+      <div class="block mb-3">
+        <input
+        type="password"
+        placeholder="Mot de passe"
+        class="Input-text w-full border border-grey-light p-3 rounded box-shadow"
+        autocomplete="current-password"
+        v-model="password"
+        />
+      </div>
+      <button
+      class="w-full border box-shadow bg-blue-dark text-white p-3 font-semibold rounded box-shadow"
+      :class="{ 'opacity-75 pointer-events-none': isDisabled }"
+      @click.prevent="login"
+      >
+      Connexion
+    </button>
   </div>
+  <div class="p-4">
+    <p class="mb-0 text-black">
+      Pas encore de compte ?
+      <router-link
+      tag="a"
+      :to="{ name: 'signup' }"
+      :class="{ 'opacity-75 pointer-events-none': isDisabled }"
+      class="inline-block no-underline font-bold text-black hover:underline"
+      >
+      Créer un compte
+    </router-link>
+  </p>
+</div>
+</form>
+</div>
 </template>
 
 <script>
@@ -79,18 +78,23 @@ export default {
       const body = { username, password };
 
       this.logIn(body)
-        .then(data => {
-          vm.isDisabled = false;
+      .then(data => {
+        vm.isDisabled = false;
 
-          if (data.success) {
-            this.$router.push('home');
+        if (data.success) {
+          localStorage.setItem('user', username)
+          if (username==='fwattier') {
+            this.$router.push('delivery');
           } else {
-            vm.msgError = data.msg;
+            this.$router.push('home');
           }
-        })
-        .catch(() => {
-          vm.isDisabled = false;
-        });
+        } else {
+          vm.msgError = data.msg;
+        }
+      })
+      .catch(() => {
+        vm.isDisabled = false;
+      });
     }
   }
 };

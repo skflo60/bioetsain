@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <router-link tag="a" :to="{ name: 'product', params: { id: product._id } }" class="block min-height">
-      <img :src="product.image" :alt="product.name">
+      <img :src="product.image || '/legumes.jpg'" :alt="product.name">
     </router-link>
     <div class="p-3">
       <h3 class="text-lg mb-1 leading-tight font-medium">{{ product.name }}</h3>
@@ -27,8 +27,9 @@ export default {
 
 <style scoped>
   .product .min-height {
-    height: 206px;
-    line-height: 206px;
+    min-height: 166px;
+    line-height: 179px;
+    border-bottom: 1px solid #DDD;
   }
 
     .product .min-height > img {

@@ -7,19 +7,19 @@
       <div class="w-1/2 px-2">
         <h2 class="text-2xl mb-2 leading-tight font-medium">{{ currentProduct.name }}</h2>
         <p class="text-lg font-semibold mb-3">{{ currentProduct.price | currency }}</p>
-        <p class="text-sm mb-3">Category: <span class="text-capitalize">{{ currentProduct.category }}</span></p>
+        <p class="text-sm mb-3">Catégorie: <span class="text-capitalize">{{ currentProduct.category }}</span></p>
         <p class="text-base text-grey-darker mb-5">
           {{ currentProduct.description }}
         </p>
-        <button 
-          class="block w-full border shadow p-2 rounded hover:bg-blue-dark hover:text-white" 
+        <button
+          class="block w-full border shadow p-2 rounded hover:bg-blue-dark hover:text-white"
           @click="addToCart(currentProduct)">
-          Add To Cart
+          Ajouter au panier
         </button>
       </div>
     </div>
     <div class="mt-6">
-      <h3 class="text-2xl mb-6">You may also like</h3>
+      <h3 class="text-2xl mb-6">Et ceux-là ?</h3>
       <div class="cards">
       <div class="flex shadow-lg rounded-lg overflow-hidden bg-white" v-for="product in products" :key="product._id">
         <Product :product="product"/>
@@ -67,4 +67,3 @@ export default {
   }
 };
 </script>
-

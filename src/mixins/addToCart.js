@@ -3,10 +3,10 @@ import { getProductById } from '@/utils/utils';
 
 export default {
   methods: {
-    ...mapActions(['addCart', 'incrementCart']),
+    ...mapActions(['addCart', 'refreshCart', 'incrementCart']),
     addToCart(product) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+      localStorage.setItem('last-add', JSON.stringify(product));
       if (cart.length) {
         let item = getProductById(cart, product._id);
 
@@ -14,6 +14,7 @@ export default {
           // check if is not new item
           this.incrementCart(item);
           localStorage.setItem('cart', JSON.stringify(cart));
+          this.refreshCart(item);
         } else {
           this.updateToCart(cart, product);
         }

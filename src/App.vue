@@ -28,6 +28,7 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -37,6 +38,11 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
+}
+
+@font-face {
+	font-family: "chalk";
+	src: url('/chalk.ttf');
 }
 
 @media (min-width: 768px) {

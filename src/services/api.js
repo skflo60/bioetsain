@@ -3,7 +3,7 @@ import NProgress from 'nprogress';
 
 export default () => {
   const instance = axios.create({
-    baseURL: process.env.VUE_APP_BACKEND || 'https://bonsain.herokuapp.com/'
+    baseURL: 'http://localhost:3000/api/'// process.env.VUE_APP_BACKEND || 'https://biosain-api.herokuapp.com/api/'
   });
 
   instance.interceptors.request.use(
