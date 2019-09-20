@@ -1,0 +1,9 @@
+html, body {
+  font-family: 'Karla', sans-serif !important;
+}
+
+@media min-width(700px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
